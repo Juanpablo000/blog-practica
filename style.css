@@ -1,69 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 html{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
 }
 
-body{
-    margin: 0;
-    background-color: #efefef;
-}
-
-header{
-    background-color: #364555;
-    color: white;
-    padding: 3rem 2rem;
+.title h1{
+    color: black;
+    padding: 20px 0;
     text-align: center;
-}
-
-head h1{
-    font-size: 4rem;
-    text-align: center;
+    font-size: 2.9em;
 }
 
 .container{
-    width: 400px;
-    margin: 0 auto; /* centrar container */
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+   /*  place-items: center; */
 }
 
+.container > .header,
+.container > .content,
+.container > .sidebar,
+.container > .footer,
+.container > div{
+    padding: 20px;
+    border: 1px solid #000000;
+}
 
-section article {
+.container .header,
+.container .footer{
+    background-color: #1e272e;
+    color: #ffffff;
+    grid-column: 1/6;
+}
+
+.container > .content{
+    /* grid-column: span 3; */
+    place-items: center;
+    grid-column: 1/4;
+    display: grid;
+    gap: 0.8em;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+
+.content > .post{
+    border: 1px solid #000000;
+}
+
+main .post {
     transition: all 0.3s ease;
-    background-color: white;
-    margin: 1rem 0;
+    background-color: rgb(180, 180, 180);
     border-radius: 0.5rem;
-    padding: 0.25rem 0;
     cursor: pointer;
 }
 
-section article:hover{
+main .post:hover{
     box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
 }
 
-section article h2, section article p{
+main .post h2, main .post p{
     margin: 1rem;
+    text-align: center;
 }
 
-footer{
-    background-color: #222;
-    padding: 3rem;
-    color: #fff;
+main img{
+    border: 2.5px solid #502525;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto; /* Esto centrará la imagen horizontalmente */
+    display: block; /* Esto asegura que el margin funcione correctamente */
 }
 
-footer section{
-    float: right;
+.container .sidebar{
+    grid-column: span 2;
+    background: #485460;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-footer p{
-    margin: 0;
+.container .sidebar img{
+    margin-top: 5px;
 }
 
-footer a{
-    transition: color 0.3s ease;
-    color: #fff;
-    text-decoration: none;
+.container > .relatedpost{
+    background: #485460;
+    color: white;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
 }
 
-footer a:hover{
-    color: cornflowerblue;
+.container > .relatedpost:hover{
+    cursor: pointer;
+    color: #000000;
+    background: white;
 }
+
 
