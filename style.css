@@ -18,7 +18,21 @@ html{
 .container{
     display: grid;
     grid-template-columns: repeat(5,1fr);
-   /*  place-items: center; */
+}
+
+
+.container .sidebar-search{
+    grid-column: span 1;
+    background: #485460;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container > .page{
+    grid-column: 2/5;
 }
 
 .container > .header,
@@ -37,14 +51,11 @@ html{
     grid-column: 1/6;
 }
 
-.container > .content{
-    /* grid-column: span 3; */
-    place-items: center;
-    grid-column: 1/4;
+.container > .page > .content{
+    /* place-items: center; */
     display: grid;
     gap: 0.8em;
     grid-template-columns: repeat(3, 1fr);
-    
 }
 
 .content > .post{
@@ -76,7 +87,7 @@ main img{
 }
 
 .container .sidebar{
-    grid-column: span 2;
+    grid-column: span 1;
     background: #485460;
     color: #ffffff;
     display: flex;
@@ -106,3 +117,28 @@ main img{
 }
 
 
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.container .pagination{
+    grid-column: 2/5;
+}
+
+.pagination a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #485460;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
