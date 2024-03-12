@@ -17,54 +17,83 @@ html{
 
 .container{
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    height: 100vh;
+    /* width: clamp(200px, 100%, 900px); */
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+
+   /*  grid-template-columns: repeat(auto-fill, minmax(minmax(100%, 5rem),1fr)); */
+   /*  grid-auto-flow: dense; */
+
+    grid-template-areas: 
+        "header header header"
+        "sidebar-search page sidebar"
+        "sidebar-search pagination sidebar"
+        "more-post more-post more-post"
+        "footer footer footer";
+}
+
+.container .header{
+    background-color: #1e272e;
+    color: #ffffff;
+    grid-area: header;
+}
+
+.container .page{
+    grid-area: page;
+}
+
+.container > .page > .content{
+    display: grid;
+    gap: 0.8em;
+    grid-template-columns: repeat(3, 1fr);
+    /* place-content: center; */
 }
 
 
 .container .sidebar-search{
-    grid-column: span 1;
-    background: #485460;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    background: #EBF5FB;
+    color: black;
+    grid-area: sidebar-search;
 }
 
-.container > .page{
-    grid-column: 2/5;
+.container .sidebar{
+    background: #EBF5FB;
+    color: black;
+    grid-area: sidebar;
 }
 
-.container > .header,
-.container > .content,
-.container > .sidebar,
-.container > .footer,
-.container > div{
-    padding: 20px;
-    border: 1px solid #000000;
+.container .pagination{
+    grid-area: pagination;
 }
 
-.container .header,
+.container .relat{
+    grid-area: more-post;
+}
+
 .container .footer{
     background-color: #1e272e;
     color: #ffffff;
-    grid-column: 1/6;
-}
-
-.container > .page > .content{
-    /* place-items: center; */
-    display: grid;
-    gap: 0.8em;
-    grid-template-columns: repeat(3, 1fr);
+    grid-area: footer;
 }
 
 .content > .post{
     border: 1px solid #000000;
 }
 
+.container > .header,
+.container > .content,
+.container > .sidebar,
+.container > .footer,
+.container > div,
+.container .relat{
+    padding: 20px;
+    border: 1px solid #000000;
+}
+
+
 main .post {
     transition: all 0.3s ease;
-    background-color: rgb(180, 180, 180);
+    background-color: #D6EAF8;
     border-radius: 0.5rem;
     cursor: pointer;
 }
@@ -79,43 +108,36 @@ main .post h2, main .post p{
 }
 
 main img{
-    border: 2.5px solid #502525;
+    border: 2.5px solid #2E86C1;
     height: 200px;
     width: 200px;
     margin: 0 auto; /* Esto centrará la imagen horizontalmente */
     display: block; /* Esto asegura que el margin funcione correctamente */
 }
 
-.container .sidebar{
-    grid-column: span 1;
-    background: #485460;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .container .sidebar img{
     margin-top: 5px;
 }
 
-.container > .relatedpost{
+.relat {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.relat > .relatedpost{
     background: #485460;
     color: white;
     height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 190px;
     transition: all 0.5s ease;
 }
 
-.container > .relatedpost:hover{
+.relat > .relatedpost:hover{
     cursor: pointer;
     color: #000000;
     background: white;
 }
-
 
 .page {
     display: none;
@@ -127,10 +149,6 @@ main img{
 
 .pagination {
     text-align: center;
-}
-
-.container .pagination{
-    grid-column: 2/5;
 }
 
 .pagination a {
